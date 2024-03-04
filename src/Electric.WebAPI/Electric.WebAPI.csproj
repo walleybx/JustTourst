@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\参考项目\src\Electric.SqlSugarCore\Electric.SqlSugarCore.csproj" />
     <ProjectReference Include="..\Electric.Application.Contracts\Electric.Application.Contracts.csproj" />
     <ProjectReference Include="..\Electric.Application\Electric.Application.csproj" />
     <ProjectReference Include="..\Electric.EntityFrameworkCore\Electric.EntityFrameworkCore.csproj" />
