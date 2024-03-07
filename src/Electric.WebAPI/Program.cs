@@ -3,6 +3,7 @@ using Electric.API.Extensions;
 using Electric.Application.Auth;
 using Electric.Application.DependencyInjection;
 using Electric.Domain.DependencyInjection;
+using Electric.EntityFrameworkCore.AppSetting;
 using Electric.EntityFrameworkCore.DependencyInjection;
 using Electric.SqlSugarCore.DependencyInjection;
 using Electric.WebAPI.Extensions;
@@ -41,6 +42,7 @@ builder.Services.AddJWT(jwtBearerSetting);
 //领域层注入
 builder.Services.AddDomain();
 
+
 //EntityFrameworkCore注入
 var provider = builder.Configuration.GetValue<string>("DataProvider");
 var connection = string.Empty;
@@ -61,6 +63,10 @@ switch (provider)
 
 //使用SqlSugarCore
 builder.Services.AddSqlSugarCore(provider == "MySql" ? SqlSugar.DbType.MySql : SqlSugar.DbType.SqlServer, connection);
+
+//Redis缓存
+var connection2 = builder.Configuration.GetConnectionString("RedisConnection") ?? throw new InvalidOperationException("MySqlConnection在appsettings.json未发现");
+//builder.Services.AddRedisCacheSetup(connection2);
 
 var app = builder.Build();
 
