@@ -4,7 +4,7 @@ using Electric.Application.Auth;
 using Electric.Application.DependencyInjection;
 using Electric.Domain.DependencyInjection;
 using Electric.EntityFrameworkCore.DependencyInjection;
-using Electric.SqlSugarCore.DependencyInjection;
+//using Electric.SqlSugarCore.DependencyInjection;
 using Electric.WebAPI.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -57,10 +57,10 @@ switch (provider)
 }
 
 //使用EF ORM
-//builder.Services.AddEntityFrameworkCore(provider == "MySql" ? DbType.MySql : DbType.SqlServer, connection);
+builder.Services.AddEntityFrameworkCore(provider == "MySql" ? DbType.MySql : DbType.SqlServer, connection);
 
 //使用SqlSugarCore
-builder.Services.AddSqlSugarCore(provider == "MySql" ? SqlSugar.DbType.MySql : SqlSugar.DbType.SqlServer, connection);
+//builder.Services.AddSqlSugarCore(provider == "MySql" ? SqlSugar.DbType.MySql : SqlSugar.DbType.SqlServer, connection);
 
 var app = builder.Build();
 
