@@ -1,0 +1,6 @@
+@JustTourst.WebAPI_HostAddress = http://localhost:5037
+
+GET {{JustTourst.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
